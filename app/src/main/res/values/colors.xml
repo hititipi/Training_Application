@@ -9,4 +9,10 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="background">#191926</color>
+    <color name="genre">#FF3466</color>
+    <color name="enable_star">#FF3365</color>
+    <color name="disable_star">#6D6D80</color>
+    <color name="storyline">#6D6D80</color>
+
+
 </resources>
