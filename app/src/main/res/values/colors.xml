@@ -12,7 +12,7 @@
     <color name="genre">#FF3466</color>
     <color name="enable_star">#FF3365</color>
     <color name="disable_star">#6D6D80</color>
-    <color name="storyline">#6D6D80</color>
-
-
+    <color name="storyline">#ECECEC</color>
+    <color name="cast">#ECECEC</color>
+    <color name="actor_name">#D8D8D8</color>
 </resources>
