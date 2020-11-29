@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    android:orientation="vertical"
-    tools:context=".MovieDetailsActivity">
+    android:orientation="vertical">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -205,7 +204,7 @@
             app:layout_constraintEnd_toEndOf="@id/right_guideline"
             app:layout_constraintStart_toEndOf="@+id/MarkRuffalo_image"
             app:layout_constraintTop_toBottomOf="@+id/cast"
-             />
+            />
 
         <TextView
             android:id="@+id/RobertDowney_text"
