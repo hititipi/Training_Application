@@ -6,6 +6,8 @@ import androidx.fragment.app.commit
 
 class MainActivity : AppCompatActivity(), ChangeFragmentListener {
 
+    private val fragmentMoviesDetails = FragmentMoviesDetails()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -18,15 +20,13 @@ class MainActivity : AppCompatActivity(), ChangeFragmentListener {
     }
 
     override fun showFragment(fragmentName: String) {
-        if (fragmentName == FragmentMoviesDetails.NAME){
-            supportFragmentManager.commit {
-                add(R.id.main_container, FragmentMoviesDetails())
+        println(fragmentName)
+        when (fragmentName){
+            FragmentMoviesDetails.NAME ->
+                supportFragmentManager.beginTransaction().apply {
+                    add(R.id.main_container, fragmentMoviesDetails).addToBackStack(null).commit()
             }
-        } else if (fragmentName == FragmentMoviesList.NAME){
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.main_container, FragmentMoviesList())
-                .addToBackStack(null)
-                .commit()
+            FragmentMoviesList.NAME ->  supportFragmentManager.popBackStack()
         }
     }
 

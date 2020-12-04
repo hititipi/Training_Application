@@ -5,11 +5,10 @@
     <!--Movies list-->
     <string name="movies_list">Movies list</string>
     <string name="card_genre">Action, Adventure, Drama</string>
-    <string name="card_title">Avengers: End Game</string>
     <!--Movie_Details-->
     <string name="back">Back</string>
     <string name="age">13+</string>
-    <string name="movie_name">Avengers: \nEnd Game</string>
+    <string name="movie_name">Avengers: End Game</string>
     <string name="genre">Action, Adventure, Fantasy</string>
     <string name="reviews">125 Reviews</string>
     <string name="storyline">Storyline</string>

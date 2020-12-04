@@ -5,26 +5,26 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
+import rus.hititipi.trainingapplication.databinding.FragmentMoviesListBinding
 
 class FragmentMoviesList : Fragment() {
 
     private var changeFragmentListener: ChangeFragmentListener ?= null
+    private lateinit var binding: FragmentMoviesListBinding
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_movies_list, container, false)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding  = FragmentMoviesListBinding.inflate(layoutInflater)
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        view.findViewById<CardView>(R.id.card_view).setOnClickListener {
+    override fun onCreateView(inflater: LayoutInflater,
+                              container: ViewGroup?,
+                              savedInstanceState: Bundle?): View? {
+        binding.cardView.setOnClickListener {
             changeFragmentListener?.showFragment(FragmentMoviesDetails.NAME)
         }
+        return binding.root
     }
 
     override fun onAttach(context: Context) {
@@ -40,6 +40,6 @@ class FragmentMoviesList : Fragment() {
     }
 
     companion object {
-        val NAME = "MoveList"
+        const val NAME = "MoveList"
     }
 }
