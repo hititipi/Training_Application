@@ -152,7 +152,7 @@
 
         <ImageView
             android:id="@+id/RobertDowney_image"
-            app:srcCompat="@drawable/robert_downey"
+            app:srcCompat="@drawable/actor_robert_downey"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginEnd="8dp"
@@ -164,7 +164,7 @@
 
         <ImageView
             android:id="@+id/ChrisEvans_image"
-            app:srcCompat="@drawable/chris_evans"
+            app:srcCompat="@drawable/actor_chris_evans"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginEnd="8dp"
@@ -176,7 +176,7 @@
 
         <ImageView
             android:id="@+id/MarkRuffalo_image"
-            app:srcCompat="@drawable/mark_ruffalo"
+            app:srcCompat="@drawable/actor_mark_ruffalo"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginEnd="8dp"
@@ -188,7 +188,7 @@
 
         <ImageView
             android:id="@+id/ChrisHemsworth_image"
-            app:srcCompat="@drawable/chris_hemsworth"
+            app:srcCompat="@drawable/actor_chris_hemsworth"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:scaleType="centerCrop"

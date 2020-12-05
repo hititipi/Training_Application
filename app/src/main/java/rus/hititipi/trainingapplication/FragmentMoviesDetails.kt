@@ -26,24 +26,25 @@ class FragmentMoviesDetails : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         binding.backButton.setOnClickListener{
+            println(changeFragmentListener)
             changeFragmentListener?.showFragment(FragmentMoviesList.NAME)
         }
         setConrnerRadius();
         return binding.root
     }
 
-    fun setConrnerRadius(){
+    private fun setConrnerRadius(){
         setCornerRadius(binding.ChrisHemsworthImage, 4f)
         setCornerRadius(binding.ChrisEvansImage, 4f)
         setCornerRadius(binding.MarkRuffaloImage, 4f)
         setCornerRadius(binding.RobertDowneyImage, 4f)
     }
 
-    fun setCornerRadius(view: ImageView, radius: Float) {
+    private fun setCornerRadius(view: ImageView, radius: Float) {
         view.outlineProvider = object : ViewOutlineProvider() {
             @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
             override fun getOutline(view: View?, outline: Outline?) {
-                outline?.setRoundRect(0, 0, view!!.width, view!!.height, radius)
+                outline?.setRoundRect(0, 0, view!!.width, view.height, radius)
             }
         }
         view.clipToOutline = true

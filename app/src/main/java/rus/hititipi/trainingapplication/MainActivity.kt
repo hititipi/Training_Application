@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.commit
 
-class MainActivity : AppCompatActivity(), ChangeFragmentListener {
+class MainActivity : AppCompatActivity(), ChangeFragmentListener, OpenMovieListener {
 
     private val fragmentMoviesDetails = FragmentMoviesDetails()
 
@@ -30,4 +30,10 @@ class MainActivity : AppCompatActivity(), ChangeFragmentListener {
         }
     }
 
+    override fun onClick(movie: Movie) {
+        showFragment(FragmentMoviesDetails.NAME)
+    }
+
 }
+
+
