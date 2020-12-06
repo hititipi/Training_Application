@@ -14,11 +14,11 @@ class FragmentMoviesList : Fragment() {
 
     private var recycler: RecyclerView? = null
     private var clickListener: OpenMovieListener? = null
-    private lateinit var  binding: FragmentMoviesListBinding
+    private lateinit var binding: FragmentMoviesListBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding  = FragmentMoviesListBinding.inflate(layoutInflater)
+        binding = FragmentMoviesListBinding.inflate(layoutInflater)
     }
 
     override fun onCreateView(
@@ -26,11 +26,15 @@ class FragmentMoviesList : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        createRecyclerView()
+        return binding.root
+    }
 
+    private fun createRecyclerView(){
         recycler = binding.rvMovies
-        recycler?.adapter = MoviesAdapter(clickListener)
-        recycler?.layoutManager = GridLayoutManager(context, 2)
-         return binding.root
+        recycler?.adapter = MovieAdapter(clickListener)
+        val columns = getResources().getInteger(R.integer.movie_columns)
+        recycler?.layoutManager = GridLayoutManager(context, columns)
     }
 
     override fun onAttach(context: Context) {
@@ -53,14 +57,12 @@ class FragmentMoviesList : Fragment() {
     }
 
     private fun updateData() {
-        (recycler?.adapter as? MoviesAdapter)?.apply {
-            bindMovies(DataUtils().getMovies())
+        (recycler?.adapter as? MovieAdapter)?.apply {
+            bindMovies(DataUtils.getMovies())
         }
     }
 
     companion object {
-        fun newInstance() = FragmentMoviesList()
-
         const val NAME = "MoveList"
     }
 

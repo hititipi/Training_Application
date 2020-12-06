@@ -4,21 +4,17 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
-class MoviesAdapter(
-    var clickListener: OpenMovieListener?
+class MovieAdapter(
+    private var clickListener: OpenMovieListener?
     ) : RecyclerView.Adapter<MovieHolder>() {
 
-    private val RecyclerView.ViewHolder.context
-        get() = this.itemView.context
-
-
-    var movies =  listOf<Movie>()
+    private var movies =  listOf<Movie>()
 
     override fun getItemCount(): Int {
         return movies.size
     }
 
-    fun getItem(position: Int): Movie = movies[position]
+    private fun getItem(position: Int): Movie = movies[position]
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.view_holder_movie, parent, false)

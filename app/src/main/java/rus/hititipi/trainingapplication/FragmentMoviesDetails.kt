@@ -1,22 +1,21 @@
 package rus.hititipi.trainingapplication
 
 import android.content.Context
-import android.graphics.Outline
-import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.ViewOutlineProvider
-import android.widget.ImageView
-import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import rus.hititipi.trainingapplication.databinding.FragmentMoviesDetailsBinding
 
 class FragmentMoviesDetails : Fragment() {
 
+    private var recycler: RecyclerView? = null
     private var changeFragmentListener: ChangeFragmentListener ?= null
     private lateinit var  binding: FragmentMoviesDetailsBinding
+    private var movieTitle : String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,30 +24,35 @@ class FragmentMoviesDetails : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
+        movieTitle = arguments?.getString(MOVIE_KEY)
+
         binding.backButton.setOnClickListener{
-            println(changeFragmentListener)
             changeFragmentListener?.showFragment(FragmentMoviesList.NAME)
         }
-        setConrnerRadius();
+
+
+        setMovieDetails()
+        this.createRecyclerView()
         return binding.root
     }
 
-    private fun setConrnerRadius(){
-        setCornerRadius(binding.ChrisHemsworthImage, 4f)
-        setCornerRadius(binding.ChrisEvansImage, 4f)
-        setCornerRadius(binding.MarkRuffaloImage, 4f)
-        setCornerRadius(binding.RobertDowneyImage, 4f)
+    private fun setMovieDetails(){
+        val movie : Movie? = DataUtils.getMovie(movieTitle!!)
+        if (movie != null) {
+            binding.movieNameText.text = movie.title
+            binding.ageText.text = movie.age
+            binding.genreText.text = movie.genre
+            binding.ratingBar.rating = movie.rating
+            binding.reviewsText.text = movie.reviews
+        }
     }
 
-    private fun setCornerRadius(view: ImageView, radius: Float) {
-        view.outlineProvider = object : ViewOutlineProvider() {
-            @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
-            override fun getOutline(view: View?, outline: Outline?) {
-                outline?.setRoundRect(0, 0, view!!.width, view.height, radius)
-            }
-        }
-        view.clipToOutline = true
+    private fun createRecyclerView(){
+        recycler = binding.rvActors
+        recycler?.adapter = ActorAdapter()
+        recycler?.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
     }
+
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -57,12 +61,35 @@ class FragmentMoviesDetails : Fragment() {
         }
     }
 
+    override fun onStart() {
+        super.onStart()
+        updateData()
+    }
+
+    private fun updateData() {
+        (recycler?.adapter as? ActorAdapter)?.apply {
+            bindActors(DataUtils.getActors(movieTitle))
+        }
+    }
+
+
     override fun onDetach() {
         super.onDetach()
         changeFragmentListener = null
+        recycler = null
     }
 
     companion object {
         const val NAME = "MoveDetails"
+        const val MOVIE_KEY = "_movie_key"
+
+        fun newInstance(movie: Movie): FragmentMoviesDetails {
+            val args = Bundle()
+            args.putString(MOVIE_KEY, movie.title)
+            val fragment = FragmentMoviesDetails()
+            fragment.arguments = args
+            return fragment
+        }
+
     }
 }

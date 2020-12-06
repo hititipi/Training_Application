@@ -9,8 +9,8 @@ data class Movie(
     val genre : String,
     val rating : Float,
     val reviews : String,
-    val duration : String
-
+    val duration : String,
+    val actors: List<Actor>
 
 )
 

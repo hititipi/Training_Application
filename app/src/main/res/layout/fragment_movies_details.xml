@@ -68,7 +68,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/movie_name"
-            android:maxWidth="220dp"
+            android:maxWidth="230dp"
             app:layout_constraintBottom_toBottomOf="@+id/poster"
             app:layout_constraintEnd_toStartOf="@+id/right_guideline"
             app:layout_constraintHorizontal_bias="0.0"
@@ -149,106 +149,20 @@
             app:layout_constraintStart_toStartOf="@+id/left_guideline"
             app:layout_constraintTop_toBottomOf="@+id/storylineContent_text" />
 
-
-        <ImageView
-            android:id="@+id/RobertDowney_image"
-            app:srcCompat="@drawable/actor_robert_downey"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginEnd="8dp"
-            android:scaleType="centerCrop"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintEnd_toStartOf="@+id/ChrisEvans_image"
-            app:layout_constraintStart_toStartOf="@id/left_guideline"
-            app:layout_constraintTop_toBottomOf="@+id/cast" />
-
-        <ImageView
-            android:id="@+id/ChrisEvans_image"
-            app:srcCompat="@drawable/actor_chris_evans"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginEnd="8dp"
-            android:scaleType="centerCrop"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintEnd_toStartOf="@+id/MarkRuffalo_image"
-            app:layout_constraintStart_toEndOf="@+id/RobertDowney_image"
-            app:layout_constraintTop_toBottomOf="@+id/cast"/>
-
-        <ImageView
-            android:id="@+id/MarkRuffalo_image"
-            app:srcCompat="@drawable/actor_mark_ruffalo"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginEnd="8dp"
-            android:scaleType="centerCrop"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintEnd_toStartOf="@+id/ChrisHemsworth_image"
-            app:layout_constraintStart_toEndOf="@+id/ChrisEvans_image"
-            app:layout_constraintTop_toBottomOf="@+id/cast"/>
-
-        <ImageView
-            android:id="@+id/ChrisHemsworth_image"
-            app:srcCompat="@drawable/actor_chris_hemsworth"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:scaleType="centerCrop"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintEnd_toEndOf="@id/right_guideline"
-            app:layout_constraintStart_toEndOf="@+id/MarkRuffalo_image"
-            app:layout_constraintTop_toBottomOf="@+id/cast"
-            />
-
-        <TextView
-            android:id="@+id/RobertDowney_text"
-            style="@style/actor"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_actors"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="93dp"
-            android:maxLines="2"
-            android:text="@string/robert_downey"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintStart_toEndOf="@id/left_guideline"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cast"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/ChrisEvans_text"
-            app:layout_constraintStart_toStartOf="@id/left_guideline"
-            app:layout_constraintTop_toBottomOf="@+id/RobertDowney_image" />
+            />
 
-        <TextView
-            android:id="@+id/ChrisEvans_text"
-            style="@style/actor"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
-            android:layout_marginEnd="8dp"
-            android:maxLines="2"
-            android:text="@string/chris_evans"
-            app:layout_constraintEnd_toStartOf="@+id/MarkRuffalo_text"
-            app:layout_constraintStart_toEndOf="@+id/RobertDowney_text"
-            app:layout_constraintTop_toBottomOf="@+id/ChrisEvans_image" />
-
-        <TextView
-            android:id="@+id/MarkRuffalo_text"
-            style="@style/actor"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
-            android:layout_marginEnd="8dp"
-            android:maxLines="2"
-            android:text="@string/mark_ruffalo"
-            app:layout_constraintEnd_toStartOf="@+id/ChrisHemsworth_text"
-            app:layout_constraintStart_toEndOf="@+id/ChrisEvans_text"
-            app:layout_constraintTop_toBottomOf="@+id/MarkRuffalo_image" />
-
-        <TextView
-            android:id="@+id/ChrisHemsworth_text"
-            style="@style/actor"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
-            android:maxLines="2"
-            android:text="@string/chris_hemsworth"
-            app:layout_constraintEnd_toStartOf="@id/right_guideline"
-            app:layout_constraintStart_toEndOf="@+id/MarkRuffalo_text"
-            app:layout_constraintTop_toBottomOf="@+id/ChrisHemsworth_image" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

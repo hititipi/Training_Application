@@ -2,5 +2,5 @@ package rus.hititipi.trainingapplication
 
 interface OpenMovieListener {
 
-    fun onClick(actor: Movie)
+    fun onClick(movie: Movie)
 }
